@@ -24,7 +24,7 @@ Different little projects to learn Vue.js.
 		Playwright
 	Add ESLint for code quality? › No / Yes
 
-	# ... Your Vuejs project is created 
+	# ...your Vuejs project is created 
 
 	# Scaffolding project in <pathOfProject>...
 
@@ -38,7 +38,7 @@ Different little projects to learn Vue.js.
 	➜ npm i
 ```
 
-## Init git
+## Set git
 
 For this project we use github so take this in consideration when reading the instructions. 
 
@@ -52,14 +52,14 @@ For this project we use github so take this in consideration when reading the in
   <img width="45%" src="./assets/newRepoButton.png" alt="NewRepoButton"/>
 </div>
 
-- Fill the form with the name of the repository, a description of the repo, whether or not the repository is public (everyone can access it) or private etc...
+- Fill the form with the name of the repository, a description of the repository, whether or not the repository is public (everyone can access it) or private etc...
 - Click the “Create repository” button.
 
 <div align="center">
   <img width="65%" src="./assets/createRepoButton.png" alt="NewRepoButton"/>
 </div>
 
-### Add git to project
+### Initialize git to project
 
 - ```cd``` into the project directory
 
@@ -72,9 +72,12 @@ For this project we use github so take this in consideration when reading the in
 
 	➜ git add # add for the first time all the relevant files
 	➜ git commit -am "<CommitMessage>"
-
 ```
 
+### Connect project to remote git repository
 
-
+```bash
+	➜ git remote add origin git@github.com:<userName>/<repositoryName> # sets the right URL of the git repository into ./.git/config
+	➜ git push -u origin master
+```
 
