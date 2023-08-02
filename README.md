@@ -69,9 +69,8 @@ For this project we use github so take this in consideration when reading the in
 
 ### Initialize git
 
-- ```cd``` into the project directory
-
 ```bash
+	➜ cd ./<projectDirectory>
 	➜ git init
 
 	# ... git is initialized for your project
