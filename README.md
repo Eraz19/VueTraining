@@ -52,14 +52,22 @@ For this project we use github so take this in consideration when reading the in
   <img width="45%" src="./assets/newRepoButton.png" alt="NewRepoButton"/>
 </div>
 
-- Fill the form with the name of the repository, a description of the repository, whether or not the repository is public (everyone can access it) or private etc...
+- Fill the form with the name of the repository, a description of the repository, whether or not the repository is public (everyone can access it) or private etc... The only field we want to keep unchanged are:
+  - Add a README file
+  - Add .gitignore
+  - Choose a license
+
+<div align="center">
+  <img width="65%" src="./assets/createRepoForm.png" alt="NewRepoButton"/>
+</div>
+
 - Click the “Create repository” button.
 
 <div align="center">
   <img width="65%" src="./assets/createRepoButton.png" alt="NewRepoButton"/>
 </div>
 
-### Initialize git to project
+### Initialize git
 
 - ```cd``` into the project directory
 
@@ -77,7 +85,7 @@ For this project we use github so take this in consideration when reading the in
 ### Connect project to remote git repository
 
 ```bash
-	➜ git remote add origin git@github.com:<userName>/<repositoryName> # sets the right URL of the git repository into ./.git/config
+	➜ git remote add origin git@github.com:<userName>/<repositoryName>.git # sets the right URL of the git repository into ./.git/config
+	➜ git branch -M master
 	➜ git push -u origin master
 ```
-
