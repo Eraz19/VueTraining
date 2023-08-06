@@ -1,0 +1,12 @@
+body
+{
+	--primaryColor     :#3f3f3f;
+	--secondaryColor   :#4e4e4e;
+	--vuePrimaryColor  :#41b883;
+	--vueSecondaryColor:#34495e;
+	--textColor        :#ffffff;
+	--boxShadowColor   :rgba(37, 37, 37, 0.55);
+
+	margin : 0;
+	padding: 0;
+};
