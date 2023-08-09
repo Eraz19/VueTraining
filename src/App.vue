@@ -3,17 +3,19 @@
 	import CardNavigation from "./components/CardNavigation/index.vue";
 
 	import image from "./assets/borderland3.png";
+
+	const images : string[] = [image];
 </script>
 
 <template>
 	<div class="appContainer">
 		<Header/>
 		<div class="appContent">
-			<div class="cardNavigation">
+			<div v-for="image in images" class="cardNavigation">
 				<CardNavigation
 					:brightnessOnHover ="20"
 					:zoomOnHover       ="1.1"
-					:tiltAngle         ="8"
+					:tiltAngle         ="2"
 					title              ="Test"
 					:backgroundImagePath="image"
 					text               =
@@ -56,9 +58,13 @@
 
 		& > .appContent
 		{
+			overflow-x: hidden;
+			padding: 5vw;
 			background: var(--secondaryColor);
 			flex-grow : 1;
-			padding   : 50px;
+			display: flex;
+			gap: 10vw;
+			align-items: center;
 		};
 	};
 	.cardNavigation

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 	import { type T_CardNavigationProps } from "./types";
 	import TiltCard                       from "../TiltCard/index.vue";
+	import AutoScrollText                 from "../AutoScrollText/index.vue";
 
 	const props = defineProps<T_CardNavigationProps>();
 </script>
@@ -14,7 +15,9 @@
 				</div>
 				<div :class="$style.cardNavigationText">
 					<div :class="$style.cardNavigationTextTitle">{{ props.title }}</div>
-					<div :class="$style.cardNavigationTextContent">{{ props.text }}</div>
+					<div :class="$style.cardNavigationTextContent">
+						<AutoScrollText :duration="20" :text="props.text"/>
+					</div>
 				</div>
 			</template>
 		</TiltCard>
@@ -47,6 +50,7 @@
 		width: 100%;
 		height: 100%;
 		transition: all 0.6s ease-in-out;
+		filter    : brightness(var(--brightness));
 	};
 	.cardNavigationContainer:hover .cardNavigationContent
 	{		
@@ -55,39 +59,38 @@
 	}
 	.cardNavigationText
 	{
-		position          : absolute;
-		top               : 0;
-		padding           : 5px;
-		overflow-wrap     : break-word;
-		height            : 100%;
-		box-sizing        : border-box;
-		display           : flex;
-		flex-direction    : column;
-		color             :white;
+		position      : absolute;
+		top           : 0;
+		height        : 100%;
+		width         : 100%;
+		display       : flex;
+		flex-direction: column;
+		color         : rgb(200, 200, 200);
+		font-family   : sans-serif;
 	};
 	.cardNavigationTextTitle
 	{
 		position  : relative;
 		height    : 10%;
-		transform : translate(-102%);
-		transition: transform 0.3s ease-in-out;
+		visibility: hidden;
+		transition: visibility 0.3s ease-in-out;
 	};
 	.cardNavigationTextContent
 	{
 		position  : relative;
 		height    : 90%;
-		transform : translate(102%);
-		transition: transform 0.3s ease-in-out;
+		visibility: hidden;
+		transition: visibility 0.3s ease-in-out;
 	};
 	.cardNavigationContainer:hover .cardNavigationTextTitle
 	{
-		transform : translate(0);
-		transition: transform 0.6s ease-in-out;
+		visibility: visible;
+		transition: visibility 0.3s ease-in-out;
 	};
 	.cardNavigationContainer:hover .cardNavigationTextContent
 	{
-		transform : translate(0);
-		transition: transform 0.6s ease-in-out;
+		visibility: visible;
+		transition: visibility 0.3s ease-in-out;
 	};
 	.cardNavigationBackground
 	{
