@@ -36,9 +36,9 @@
 	};
 	.tiltCardOver
 	{
+		position: absolute;
 		width   : 33.333%;
 		height  : 33.333%;
-		position: absolute;
 		z-index : 1000;
 	}
 	.tiltCard

@@ -15,7 +15,7 @@
 				<CardNavigation
 					:brightnessOnHover ="20"
 					:zoomOnHover       ="1.1"
-					:tiltAngle         ="2"
+					:tiltAngle         ="5"
 					title              ="Test"
 					:backgroundImagePath="image"
 					text               =

@@ -1,13 +1,20 @@
 <script setup lang="ts">
+	import { ref, type Ref } from "vue";
+
 	import { type T_CardNavigationProps } from "./types";
 	import TiltCard                       from "../TiltCard/index.vue";
 	import AutoScrollText                 from "../AutoScrollText/index.vue";
 
 	const props = defineProps<T_CardNavigationProps>();
+
+	const isTextScrolling : Ref<boolean> = ref<boolean>(false);
+
+	function TextStartScrolling() : void { isTextScrolling.value = true; };
+	function TextStopScrolling() : void { isTextScrolling.value = false; };
 </script>
 
 <template>
-	<div :class="$style.cardNavigationContainer">
+	<div :class="$style.cardNavigationContainer" @mouseover="TextStartScrolling" @mouseleave="TextStopScrolling">
 		<TiltCard :angle="props.tiltAngle" :class="$style.cardNavigation">
 			<template v-slot:content>
 				<div :class="$style.cardNavigationContent">
@@ -16,7 +23,11 @@
 				<div :class="$style.cardNavigationText">
 					<div :class="$style.cardNavigationTextTitle">{{ props.title }}</div>
 					<div :class="$style.cardNavigationTextContent">
-						<AutoScrollText :duration="20" :text="props.text"/>
+						<AutoScrollText
+							:duration="20"
+							:text="props.text"
+							:is-scrolling="isTextScrolling"
+						/>
 					</div>
 				</div>
 			</template>
@@ -30,32 +41,30 @@
 		--brightness: v-bind('props.brightnessOnHover + "%"');
 		--zoom      : v-bind(props.zoomOnHover);
 
-		position: relative;
-		width: 100%;
-		height: 100%;
-		transition: all 0.6s ease-in-out;
+		width     : 100%;
+		height    : 100%;
+		transition: transform 0.6s;
 	};
 	.cardNavigationContainer:hover
 	{
-		transition: all 0.6s ease-in-out;
 		transform : scale(var(--zoom));
+		transition: transform 0.6s;
 	}
 	.cardNavigation
 	{
-		width     : 100%;
-		height    : 100%;
+		width : 100%;
+		height: 100%;
 	};
 	.cardNavigationContent
 	{		
-		width: 100%;
-		height: 100%;
-		transition: all 0.6s ease-in-out;
-		filter    : brightness(var(--brightness));
+		width     : 100%;
+		height    : 100%;
+		transition: filter 0.6s;
 	};
 	.cardNavigationContainer:hover .cardNavigationContent
 	{		
-		transition: all 0.6s ease-in-out;
 		filter    : brightness(var(--brightness));
+		transition: filter 0.6s;
 	}
 	.cardNavigationText
 	{
@@ -70,35 +79,44 @@
 	};
 	.cardNavigationTextTitle
 	{
-		position  : relative;
-		height    : 10%;
-		visibility: hidden;
-		transition: visibility 0.3s ease-in-out;
+		position      : relative;
+		height        : 10%;
+		padding       : 10px;
+		font-size     : 2rem; 
+		opacity       : 0%;
+		display: flex;
+		align-items: center;
 	};
 	.cardNavigationTextContent
 	{
-		position  : relative;
-		height    : 90%;
-		visibility: hidden;
-		transition: visibility 0.3s ease-in-out;
+		position: relative;
+		height  : 90%;
+		padding : 10px;
+		opacity : 0%;
 	};
 	.cardNavigationContainer:hover .cardNavigationTextTitle
 	{
-		visibility: visible;
-		transition: visibility 0.3s ease-in-out;
+		animation: 0.5s ease-in fadeIn 0.1s;
+  		animation-fill-mode: forwards;
 	};
 	.cardNavigationContainer:hover .cardNavigationTextContent
 	{
-		visibility: visible;
-		transition: visibility 0.3s ease-in-out;
+		animation: 0.5s ease-in fadeIn 0.1s;
+  		animation-fill-mode: forwards;
 	};
 	.cardNavigationBackground
 	{
-		object-fit      : cover;
 		height          : 100%;
 		width           : 100%;
+		object-fit      : cover;
 		border-radius   : inherit;
 		background-color: inherit;
 		border-radius   : 10px;
+	};
+	@keyframes fadeIn
+	{
+		0%   { opacity: 0%;   }
+		60%  { opacity: 60%;  }
+		100% { opacity: 100%; }
 	};
 </style>
