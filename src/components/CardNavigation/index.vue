@@ -41,6 +41,7 @@
 		--brightness: v-bind('props.brightnessOnHover + "%"');
 		--zoom      : v-bind(props.zoomOnHover);
 
+		position: relative;
 		width     : 100%;
 		height    : 100%;
 		transition: transform 0.6s;
@@ -49,7 +50,7 @@
 	{
 		transform : scale(var(--zoom));
 		transition: transform 0.6s;
-	}
+	};
 	.cardNavigation
 	{
 		width : 100%;
@@ -65,7 +66,7 @@
 	{		
 		filter    : brightness(var(--brightness));
 		transition: filter 0.6s;
-	}
+	};
 	.cardNavigationText
 	{
 		position      : absolute;

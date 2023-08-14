@@ -48,7 +48,7 @@
 	.scrollingText.hover
 	{
 		animation: autoscroll var(--animationDuration) 1s linear infinite;
-	}
+	};
 	@keyframes autoscroll
 	{
 		0% { top: 0%; }
